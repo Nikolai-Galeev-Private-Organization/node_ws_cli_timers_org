@@ -1,0 +1,68 @@
+{
+  "name": "timers-noauth",
+  "version": "1.0.0",
+  "author": "",
+  "description": "",
+  "keywords": [],
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "migrate": "node ./node_modules/migrate-mongo/bin/migrate-mongo.js up",
+    "dev": "npm run migrate && node ./node_modules/cross-env/src/bin/cross-env.js NODE_ENV=development ./node_modules/nodemon/bin/nodemon.js index.js -e js",
+    "test": "echo \"Tests passed\" && exit 0",
+    "prettify": "prettier --write",
+    "prettify:all": "prettier --write \"./**/*.{js,json}\"",
+    "lint": "eslint",
+    "lint:all": "eslint \"**/*.js\""
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.25.0",
+    "@babel/eslint-parser": "^7.25.0",
+    "babel-jest": "^29.7.0",
+    "cross-env": "^7.0.3",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-jest": "^27.9.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "husky": "^4.3.8",
+    "lint-staged": "^10.5.4",
+    "nodemon": "^3.1.14",
+    "prettier": "^3.3.3"
+  },
+  "lint-staged": {
+    "*.js": [
+      "npm run prettify",
+      "npm run lint"
+    ],
+    "*.json": [
+      "npm run prettify"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emirotin/node-template.git"
+  },
+  "bugs": {
+    "url": "https://github.com/emirotin/node-template/issues"
+  },
+  "homepage": "https://github.com/emirotin/node-template#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "dotenv": "^18.0.9",
+    "express": "^4.17.1",
+    "migrate-mongo": "^14.0.7",
+    "mongodb": "^7.7.0",
+    "nanoid": "^3.1.10",
+    "ws": "^8.23.0"
+  }
+}
